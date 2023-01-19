@@ -67,7 +67,7 @@ export const handleSubmit = async (e: SubmitEvent | KeyboardEvent) => {
     loader(messageDiv);
 
     //! Fetch data from server
-    const response = await fetch("http://localhost:5000", {
+    const response = await fetch("https://chatgpt-28cb.onrender.com", {
         method: "POST",
         headers: {
             "Content-type": "application/json"
