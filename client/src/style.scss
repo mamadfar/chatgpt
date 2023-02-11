@@ -112,36 +112,63 @@ body {
   display: none;
 }
 
-form {
+.chatgpt {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 10px;
-  background: #40414F;
 
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  & textarea {
-  width: 100%;
+  & form {
+	padding: 10px;
+	background: #40414F;
 
-  color: #fff;
-  font-size: 18px;
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
 
-  padding: 10px;
-  background: transparent;
-  border-radius: 5px;
-  border: none;
-  outline: none;
+	& textarea {
+	  width: 100%;
+
+	  color: #fff;
+	  font-size: 18px;
+
+	  padding: 10px;
+	  background: transparent;
+	  border-radius: 5px;
+	  border: none;
+	  outline: none;
+	}
+
+	& button {
+	  outline: 0;
+	  border: 0;
+	  cursor: pointer;
+	  background: transparent;
+	}
+
+	& img {
+	  width: 30px;
+	  height: 30px;
+	}
   }
-  & button {
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-    background: transparent;
-  }
-  & img {
-    width: 30px;
-    height: 30px;
+}
+
+.controller-btn {
+  &__wrapper {
+	display: flex;
+	width: 100%;
+	justify-content: end;
+	gap: 0.5rem;
+	margin-right: 5px;
+	margin-bottom: 5px;
+
+	& button {
+	  cursor: pointer;
+	  background: transparent;
+	  outline: none;
+	  border: 1px solid #000;
+	  border-radius: 5px;
+	  padding: 0.3rem 0.6rem;
+	  color: #ffffff;
+	}
   }
 }

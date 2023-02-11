@@ -2,6 +2,8 @@ import bot from "./assets/bot.svg";
 import user from "./assets/user.svg";
 import {chatContainer, form} from "./main";
 
+const synth = window.speechSynthesis;
+
 let loadInterval: any;
 
 //! Create (...) for each question
@@ -67,6 +69,7 @@ export const handleSubmit = async (e: SubmitEvent | KeyboardEvent) => {
     loader(messageDiv);
 
     //! Fetch data from server
+    // const response = await fetch("http://localhost:5000", {
     const response = await fetch("https://chatgpt-28cb.onrender.com", {
         method: "POST",
         headers: {
@@ -82,6 +85,16 @@ export const handleSubmit = async (e: SubmitEvent | KeyboardEvent) => {
         const data = await response.json();
         const parsedData = data.bot.trim();
         typeText(messageDiv, parsedData);
+
+        //! Speaking feature
+        if (synth.speaking) {
+            synth.cancel();
+        }
+        const utterThis = new SpeechSynthesisUtterance(parsedData);
+        utterThis.addEventListener('error', () => {
+            console.error('SpeechSynthesisUtterance error');
+        });
+        synth.speak(utterThis);
     } else {
         const err = await response.text();
         messageDiv.innerHTML = "Something went wrong!"
